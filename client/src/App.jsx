@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [groceryItems, setGroceryItems] = useState([
-    { id: 1, name: 'Milk', completed: false },
-    { id: 2, name: 'Chicken', completed: false },
-    { id: 3, name: 'Rice', completed: false },
-    { id: 4, name: 'Fruit snacks', completed: false },
-  ]);
+  const [groceryItems, setGroceryItems] = useState([]);
 
   const [newItem, setNewItem] = useState('');
+
+  useEffect(() => {
+  fetch('http://localhost:5000/api/groceries')
+    .then((response) => response.json())
+    .then((data) => setGroceryItems(data))
+    .catch((error) => console.error('Error fetching groceries:', error));
+}, []);
 
   const addItem = () => {
     if (newItem.trim() === '') {
