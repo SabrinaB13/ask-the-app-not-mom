@@ -3,29 +3,33 @@ import './App.css';
 
 function App() {
   const [groceryItems, setGroceryItems] = useState([]);
-
   const [newItem, setNewItem] = useState('');
 
   useEffect(() => {
-  fetch('http://localhost:5000/api/groceries')
-    .then((response) => response.json())
-    .then((data) => setGroceryItems(data))
-    .catch((error) => console.error('Error fetching groceries:', error));
-}, []);
+    fetch('http://localhost:5000/api/groceries')
+      .then((response) => response.json())
+      .then((data) => setGroceryItems(data))
+      .catch((error) => console.error('Error fetching groceries:', error));
+  }, []);
 
   const addItem = () => {
     if (newItem.trim() === '') {
       return;
     }
 
-    const item = {
-      id: Date.now(),
-      name: newItem,
-      completed: false,
-    };
-
-    setGroceryItems([...groceryItems, item]);
-    setNewItem('');
+    fetch('http://localhost:5000/api/groceries', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: newItem }),
+    })
+      .then((response) => response.json())
+      .then((createdItem) => {
+        setGroceryItems([...groceryItems, createdItem]);
+        setNewItem('');
+      })
+      .catch((error) => console.error('Error adding grocery item:', error));
   };
 
   const toggleItem = (id) => {

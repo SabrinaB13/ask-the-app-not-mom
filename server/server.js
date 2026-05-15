@@ -7,16 +7,36 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
+let groceryItems = [
+  { id: 1, name: 'Milk', completed: false },
+  { id: 2, name: 'Chicken', completed: false },
+  { id: 3, name: 'Rice', completed: false },
+];
+
 app.get('/', (req, res) => {
   res.send('Ask the App, Not Mom backend is running!');
 });
 
 app.get('/api/groceries', (req, res) => {
-  res.json([
-    { id: 1, name: 'Milk', completed: false },
-    { id: 2, name: 'Chicken', completed: false },
-    { id: 3, name: 'Rice', completed: false },
-  ]);
+  res.json(groceryItems);
+});
+
+app.post('/api/groceries', (req, res) => {
+  const { name } = req.body;
+
+  if (!name || name.trim() === '') {
+    return res.status(400).json({ message: 'Grocery item name is required.' });
+  }
+
+  const newItem = {
+    id: Date.now(),
+    name: name.trim(),
+    completed: false,
+  };
+
+  groceryItems.push(newItem);
+
+  res.status(201).json(newItem);
 });
 
 app.listen(PORT, () => {
