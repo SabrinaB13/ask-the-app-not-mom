@@ -113,3 +113,119 @@ li {
 .delete-button:hover {
   background: #dc2626;
 }
+
+.grocery-form select {
+  padding: 0.75rem;
+  border: 1px solid #ebacce;
+  border-radius: 999px;
+  font-size: 1rem;
+  background: white;
+  color: black;
+}
+
+.category-label {
+  display: block;
+  font-size: 0.75rem;
+  color: black;
+  opacity: 0.7;
+  margin-top: 0.15rem;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.active-tab {
+  background: #c0528f;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.recipe-form input,
+.recipe-form select,
+.recipe-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ebacce;
+  border-radius: 14px;
+  font-size: 1rem;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.recipe-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.recipe-list {
+  margin-top: 1rem;
+}
+
+.recipe-card {
+  background: white;
+  color: black;
+  padding: 1rem;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+}
+
+.recipe-card h3 {
+  margin: 0;
+  color: black;
+}
+
+.meal-type {
+  font-weight: bold;
+  margin: 0.25rem 0;
+  color: black;
+}
+
+.ingredients-list {
+  margin-top: 0.5rem;
+}
+
+.ingredients-list ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.ingredients-list li {
+  color: black;
+  margin: 0.2rem 0;
+}
+.photo-upload-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: bold;
+  color: black;
+}
+
+.photo-upload-label input {
+  background: white;
+  padding: 0.75rem;
+  border: 1px solid #ebacce;
+  border-radius: 14px;
+  color: black;
+}
+
+.recipe-photo-preview,
+.recipe-card-photo {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 0.5rem 0;
+}
